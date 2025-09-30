@@ -36,4 +36,22 @@ portfolio/
     - contact.html         # Contact form page
 - static
     - style.css            # CSS styling
+# Quick Setup Guide
+These instructions assume Python 3 and a virtual environment (.venv) are already set up.
 
+1. Environment Activation and Dependencies
+   # Navigate to the project root
+       cd C:\Users\reddy\OneDrive\Desktop\portfolio
+
+# Activate the environment
+     .venv\Scripts\Activate
+
+# Install Flask
+    pip install Flask
+2. Execution and Access
+
+Run the main application file:
+
+     python app.py
+
+Access the site in your browser at: http://127.0.0.1:5000/
