@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GANGAM CHARANYA REDDY | AI & Flask Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>{{ data.name }}</h1>
+        <p class="objective">{{ data.name }} is a B.Tech Graduate (8.31 CGPA) aiming to apply knowledge of programming, AI, and Cloud technologies to innovative projects[cite: 49, 51].</p>
+        <div class="contact-info">
+            <span>📞 +91 9951812361</span> | 
+            <span>📧 reddycharanya21@gmail.com [cite: 48]</span>
+        </div>
+        <nav>
+            <a href="#skills">Skills</a>
+            <a href="#project">Project</a>
+            <a href="#contact-form">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-list">
+                {% for skill in data.skills %}
+                    <span>{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="project">
+            <h2>Featured Project: {{ data.project_title }}</h2>
+            <p class="project-summary">
+                Developed an **AI-based decision-making tool** to optimize smart grid energy usage[cite: 69]. The project demonstrated complex system design by balancing three stakeholders' interests: **suppliers** (profit), **users** (bill reduction), and **governments** (carbon goals)[cite: 71]. Implemented demand-supply balance algorithms ensuring energy efficiency[cite: 72].
+            </p>
+            <a href="[Link to GitHub Repo]" class="repo-link" target="_blank">View Project Repository</a>
+        </section>
+
+        <section id="contact-form">
+            <h2>Contact Me</h2>
+            <form method="POST" action="{{ url_for('contact') }}">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        &copy; 2024 {{ data.name }} | Python Flask Portfolio
+    </footer>
+
+</body>
+</html>
